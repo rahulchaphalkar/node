@@ -119,6 +119,7 @@
           '-Wno-array-bounds',
           '-Wno-nonnull',
           '-Wno-dangling-pointer',
+	  '-Wno-template-body',
           # On by default in Clang and V8 requires it at least for arm64.
           '-flax-vector-conversions',
         ],

@@ -128,6 +128,9 @@
     # Sets -dENABLE_VTUNE_JIT_INTERFACE.
     'v8_enable_vtunejit%': 0,
 
+    # Sets -doptISA=1
+    'v8_enable_apx%': 0,
+
     # Currently set for node by common.gypi, avoiding default because of gyp file bug.
     # Should be turned on only for debugging.
     #'v8_enable_handle_zapping%': 0,
@@ -355,6 +358,12 @@
       }],
       ['v8_enable_vtunejit==1', {
         'defines': ['ENABLE_VTUNE_JIT_INTERFACE',],
+      }],
+      ['v8_enable_apx==1', {
+        'defines': ['optISA=1', 'V8_ENABLE_APX',],
+	'cflags': ['-mapx-features=egpr,ndd',],
+      }, {
+        'defines': ['optISA=0',],
       }],
       ['v8_enable_pointer_compression==1', {
         'defines': ['V8_COMPRESS_POINTERS'],
